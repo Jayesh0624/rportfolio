@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jayesh Mahajan - Web Developer & UI/UX Designer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <header>
+        <nav class="container">
+            <div class="logo" onclick="scrollToTop()">JM</div>
+            <ul class="nav-links">
+                <li><a href="#home" data-section="home">Home</a></li>
+                <li><a href="#about" data-section="about">About</a></li>
+                <li><a href="#projects" data-section="projects">Projects</a></li>
+                <li><a href="#contact" data-section="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Jayesh Mahajan</h1>
+                    <p class="subtitle">Web Developer & UI/UX Designer</p>
+                    <p style="margin-bottom: 2rem; opacity: 0.8;">BTech Computer Science & Engineering Student</p>
+                    <a href="#projects" class="cta-button">View My Work</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-card">
+                    <h3>Passionate Developer</h3>
+                    <p>
+                        I'm Jayesh Mahajan, a dedicated BTech Computer Science & Engineering student with a burning passion for web development and UI/UX design. 
+                        I love creating digital experiences that are not just functional, but also beautiful and intuitive. My journey in tech has been driven by 
+                        curiosity and the desire to build solutions that make a difference.
+                    </p>
+                    <br>
+                    <p>
+                        With a strong foundation in computer science principles and hands-on experience in modern web technologies, I'm constantly exploring 
+                        new frameworks, design patterns, and innovative approaches to create engaging user experiences.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">My Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>I Validate</h3>
+                        <p>
+                            A comprehensive validation tool that helps users validate various types of data and inputs. 
+                            Built with modern web technologies, featuring an intuitive interface and robust validation algorithms 
+                            to ensure data accuracy and integrity.
+                        </p>
+                        <a href="https://jayesh0624.github.io/I-validate/" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>Tic Tac Toe Game</h3>
+                        <p>
+                            An interactive and engaging Tic Tac Toe game with modern design and smooth animations. 
+                            Features include score tracking, responsive design, and an intelligent game engine that provides 
+                            an enjoyable gaming experience across all devices.
+                        </p>
+                        <a href="https://jayesh0624.github.io/tic-tac-toe/" class="project-link" target="_blank">
+                            <i class="fas fa-gamepad"></i> Play Game
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h3 style="margin-bottom: 2rem; font-size: 2rem;">Let's Connect</h3>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/jayesh-mahajan-9b4ba2278" 
+                   class="social-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Jayesh0624" 
+                   class="social-icon" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/jayesh0624" 
+                   class="social-icon" target="_blank" rel="noopener noreferrer" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:jayeshkishormahajan@gmail.com" 
+                   class="social-icon" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <p>&copy; 2025 Jayesh Mahajan. Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i> and passion.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Logo click handler
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const offsetTop = target.offsetTop - 80; // Account for fixed header
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Also handle the CTA button
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector('#projects');
+            if (target) {
+                const offsetTop = target.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.1)';
+            }
+        });
+
+        // Add entrance animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Parallax effect for floating shapes
+        window.addEventListener('scroll', () => {
+            const shapes = document.querySelectorAll('.shape');
+            const scrolled = window.pageYOffset;
+            shapes.forEach((shape, index) => {
+                const rate = scrolled * (index + 1) * 0.1;
+                shape.style.transform = `translateY(${rate}px) rotate(${rate}deg)`;
+            });
+        });
+
+        // Add typing effect to hero title
+        const heroTitle = document.querySelector('.hero h1');
+        const titleText = 'Jayesh Mahajan';
+        heroTitle.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < titleText.length) {
+                heroTitle.textContent += titleText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        };
+        
+        setTimeout(typeWriter, 500);
+    </script>
+</body>
+</html>
